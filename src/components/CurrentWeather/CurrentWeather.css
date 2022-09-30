@@ -1,0 +1,69 @@
+
+.currentWeather{
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+  border-radius: 10px;
+  box-shadow: 7px 7px 7px 2px rgba(0, 0, 0, 0.3);
+}
+.currentWeather--actual {
+  border-radius: 10px 10px 0 0;
+  background: radial-gradient(circle, rgba(255,204,0,1) 15%, rgba(254,181,42,1) 99%);
+}
+.currentWeather--box{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 6.5px;
+}
+.currentWeather--imgs{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.currentWeather--details{
+  background-color: whitesmoke;
+}
+
+.cuerrentWeather--stats{
+  font-weight: bold;
+}
+.cuerrentWeather--stats-temp{
+  align-self: center;
+  color: #333333;
+  font-size: 7rem;
+  letter-spacing: -5px;
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 5px;
+}
+h3{  
+  padding: 2px 19px 5px 0;
+  border-bottom: 2px solid green;
+} 
+li{
+  display: flex;
+  justify-content: space-between;
+}
+
+span:nth-child(1){
+  padding: 5px 19px 0 0;
+}
+
+.stats{
+  align-self: flex-end;
+}
+
+.curentTim0e{
+  height: 26px;
+  padding-right: 10px;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  border-radius: 0 0 10px 10px ;
+  background: radial-gradient(circle, rgba(255,204,0,1) 15%, rgba(254,181,42,1) 99%);
+
+}
