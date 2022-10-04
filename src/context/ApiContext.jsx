@@ -35,8 +35,9 @@ const ApiContextProvider = ({children}) => {
   
    
   useEffect(() => {
-
-    upDateWeather();
+    if (paises) {
+      upDateWeather(); 
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paises]);
 

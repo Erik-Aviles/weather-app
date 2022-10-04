@@ -10,7 +10,7 @@ const SearchCountries = ()  => {
   onSubmit
   } = useApi()
 
-  const [value, setValue] = useState("Mexico");
+  const [value, setValue] = useState('');
 
 
   const handleInputChange = (event) => {
