@@ -1,24 +1,29 @@
 
 
-export const CurrentCityList = [
-    {name: 'Argentina', }, 
-    {name: 'Bolivia'},
-    {name: 'Brasil'}, 
-    {name: 'Chile'},
-    {name: 'Colombia'}, 
-    {name: 'Costa Rica'}, 
-    {name: 'Cuba'},
-    {name: 'Ecuador'}, 
-    {name: 'Salvador'}, 
-    {name: 'Guatemala'}, 
-    {name: 'Haití'}, 
-    {name: 'Honduras'}, 
-    {name: 'México'}, 
-    {name: 'Nicaragua'}, 
-    {name: 'Panamá'}, 
-    {name: 'Paraguay'}, 
-    {name: 'Perú'}, 
-    {name: 'República Dominicana'}, 
-    {name: 'Uruguay'}, 
-    {name: 'Venezuela'},
-]
+const currentCityList = [
+    'Argentina',  
+    'Bolivia',
+    'Brasil' ,
+    'Chile',
+    'Colombia' ,
+    'Costa Rica' ,
+    'Cuba',
+    'Ecuador' ,
+    'Salvador' ,
+    'Guatemala' ,
+    'Haití' ,
+    'Honduras' ,
+    'México' ,
+    'Nicaragua' ,
+    'Panama' ,
+    'Paraguay' ,
+    'Perú' ,
+    'República Dominicana' ,
+    'Uruguay' ,
+    'Venezuela',
+   ]
+
+export const random = currentCityList[Math.floor(Math.random()*currentCityList.length-1)+1]
+
+
+  console.log(random);

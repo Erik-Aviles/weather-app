@@ -1,81 +1,70 @@
-import React, { useEffect, useState} from 'react';
+import React from 'react';
+import { useApi } from '../../context/ApiContext';
 import './CurrentWeather.css';
-import { GetData } from '../Utils'
 
-export const CurrenWeather = () => {
+const CurrenWeather = () => {
 
-  const [weather, setWeather] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const weather = useApi()
   
-  const upDateWeather = () => {
-     GetData()
-     .then(newWeather=> {
-        setWeather(newWeather)
-        console.log(newWeather) 
-        setLoading(false)
-      })
-    }
-    
-  useEffect(() => {
-    upDateWeather()
-  }, [])
+  if (!weather) {
+    return <p>Cargando... clima</p>
+  }  
 
 
-  if (loading) {
-    return <p>Cargando los climas</p>
-  }
+  console.log(weather);
 
   const fecha = new Date();  
 
   return (
 
     <section className='currentWeather'>
-        <div className="currentWeather--actual currentWeather--box">
-          <div>
-            <h1>{weather.name}</h1>
-            <span>Zona Horaria: {weather.timezone}</span>
-          </div>
-          <div className="currentWeather--imgs">
-            {weather.weather.map((type) => 
-            <img key={type.id} src={`http://openweathermap.org/img/wn/${type.icon}@2x.png`} alt="Weather" />)}
-             {weather.weather.map((type) => 
-            <p key={type.id}>{type.description}</p>)}
-           
-          </div>
+      <div className="currentWeather--actual currentWeather--box">
+        <div>
+            <h1>{weather?.data.name}</h1>
+            <span>Zona Horaria: {weather?.data?.timezone}</span>
         </div>
+        
+        <div className="currentWeather--imgs">
+          {weather?.data?.weather?.map((type) => 
+          <img key={type?.id} src={`http://openweathermap.org/img/wn/${type?.icon}@2x.png`} alt="Weather" />)}
+          {weather?.data?.weather?.map((type) => 
+          <p key={type?.id}>{type?.description}</p>)}
+        </div>
+      </div>
 
-        <div className="currentWeather--details currentWeather--box">
-          <span className="cuerrentWeather--stats cuerrentWeather--stats-temp">{weather.main.temp}°C</span>
-          <div>
-            <h3>Detalles</h3>       
-            <ul> 
-              <li>
-                <span >Se siente como </span>
-                <span className="cuerrentWeather--stats stats">{weather.main.temp} °C</span>
-              </li>
-              <li>
-                <span>Viento </span>
-                <span className="cuerrentWeather--stats stats">{weather.wind.speed} m/s</span>
-              </li>
-              <li>
-                <span>Humedad </span>
-                <span className="cuerrentWeather--stats stats">{weather.main.humidity} %</span>
-              </li>
-              <li>
-                <span>Presion </span>
-                <span className="cuerrentWeather--stats stats">{weather.main.pressure} hPa</span>
-              </li>
-            </ul>
-          </div>
+      <div className="currentWeather--details currentWeather--box">
+        <span className="cuerrentWeather--stats cuerrentWeather--stats-temp">{weather?.data?.main?.temp}°C</span>
+        <div className='currentWeather--details--description'>
+          <h3>Detalles</h3>       
+          <ul> 
+            <li>
+              <span >Se siente como </span>
+              <span className="cuerrentWeather--stats stats">{weather?.data.main?.temp} °C</span>
+            </li>
+            <li>
+              <span>Viento </span>
+              <span className="cuerrentWeather--stats stats">{weather?.data?.wind?.speed} m/s</span>
+            </li>
+            <li>
+              <span>Humedad </span>
+              <span className="cuerrentWeather--stats stats">{weather?.data?.main?.humidity} %</span>
+            </li>
+            <li>
+              <span>Presion </span>
+              <span className="cuerrentWeather--stats stats">{weather?.data?.main?.pressure} hPa</span>
+            </li>
+          </ul>
+        </div>
           
-        </div>
-        <div className='curentTim0e'>
-          {fecha.toLocaleString()}
-        </div>
-
+      </div>   
+      <div className='curentTim0e'>
+        {fecha.toLocaleString()}
+      </div>
     </section>
   )
-}
+};
+
+export default CurrenWeather;
 
 
 

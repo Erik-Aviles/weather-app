@@ -1,0 +1,29 @@
+.card-list{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 0 10px 0 0;
+    box-shadow: 10px 7px 8px 5px rgba(0, 0, 0.1, 0.3);
+    background: radial-gradient(circle, rgba(255,204,0,1) 15%, rgba(254,181,42,1) 99%);
+}
+.time{
+    font-size: 1.4rem;
+}
+.card-list img{
+    width: 100px;
+    object-fit: cover;
+}
+.italic{
+    text-transform: unset;
+    font-style: italic;
+    font-size: 1.3rem;
+}
+h3{
+    border-bottom: 2px solid green;
+}
+.temp{
+    font-weight: bold;
+}

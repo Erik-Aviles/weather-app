@@ -1,38 +1,65 @@
-import { useContext, useState} from "react";
-import { WeatherContext } from "../WeatherContext";
-import { CurrentCityList} from '../CurrentCityList/index';
+import { useApi } from '../../context/ApiContext'
+import { useState } from 'react';
 import './SearchCountries.css'; 
 
 
-export function SearchCountries() {
 
-    const {loading, setSearchValue} = useContext(WeatherContext);
 
-	const onChanges = (event) => {
-		console.log(event.target.value)
-		setSearchValue(event.target.value)
-    }
-	if (loading) {
-		return <p>Cargando formularip</p>
-	}
+const SearchCountries = ()  => {
+ const { 
+  onSubmit
+  } = useApi()
 
+  const [value, setValue] = useState("Mexico");
+
+
+  const handleInputChange = (event) => {
+    setValue(event.target.value);
+  } 
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const addPais = {
+    id: Date.now(),
+    texto: value
+   }
+   onSubmit(addPais.texto); 
+  }
+  
     return (
 			<div className="SearchCountries--container">
-				<form  onChange={onChanges} className="SearchCountries">
-					<select name="pais" id="pais">
-							{CurrentCityList.map(pais => 
-								<option key={pais.name}value={pais.name}>{pais.name}</option>)}	
-					</select>
-					<button 
-						type='button'
-						className='buscar-boton'
-						onClick={onChanges}
-						>
-						Buscar
-      				</button>
+				<form 
+          className='SearchCountries'
+          onSubmit={handleSubmit}>
+          <label>
+            Escriba un pais de LATAM:
+          </label >
+          <div className='SearchCountries-input-button'>
+            <input 
+              type='text'
+              placeholder='Ecuador' 
+              onChange={handleInputChange} 
+              value={value} 
+              name='value' 
+              />    
+            <button 
+            type='submit'
+              className='buscar-boton'
+            >
+              Buscar
+            </button> 
+          </div>        
 				</form>
-			</div>
+		</div>
         
     );
 }
-  
+export default SearchCountries;
+
+/*   const handleInputChange = (event) => {
+      const changeFormValue = {
+        ...formValue,
+        [event.target.name]: event.target.value
+      } 
+      setValue(changeFormValue);
+    } */

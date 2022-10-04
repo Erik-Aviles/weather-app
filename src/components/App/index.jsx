@@ -1,14 +1,22 @@
 import React from "react";
-import { TodoProvider } from "../WeatherContext";
-import { AppUI } from "./AppUI";
+import { ApiContextProvider } from "../../context/ApiContext";
+import CurrentWeather from "../CurrentWeather";
+import SearchCountries from "../SearchCountries";
+import ListDay from "../ListDay";
+import './App.css'
 
 function App() {
 
   return (
-    <TodoProvider>
-      <AppUI />
-    </TodoProvider>
-
+    <ApiContextProvider>
+      <div className="App-container">
+        <div className="App">
+          <CurrentWeather />
+          <SearchCountries />
+        </div>
+        <ListDay />
+      </div>
+    </ApiContextProvider>
   );
 }
 
